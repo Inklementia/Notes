@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "467780682998",
+    "project_id": "ink-notes-flutter-project",
+    "storage_bucket": "ink-notes-flutter-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467780682998:android:92a776f8774211f55e98d7",
+        "android_client_info": {
+          "package_name": "uz.inklementia.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467780682998-p7i1i9sdrod3a2t7l6m0r0ka533t24vb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2o82D86pdv5u2UdwYHHz3Y1QwFxDxRMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467780682998-p7i1i9sdrod3a2t7l6m0r0ka533t24vb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
