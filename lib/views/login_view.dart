@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
-import 'package:notes/utilities/constants/routes.dart';
+import 'package:notes/constants/routes.dart';
 
-import 'package:notes/utilities/dialogs/error_dialog.dart';
+import 'package:notes/dialogs/error_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -60,22 +60,21 @@ class _LoginViewState extends State<LoginView> {
             final email = _email.text;
             final password = _password.text;
             try {
-              final userCredentials = await FirebaseAuth.instance
+              await FirebaseAuth.instance
                   .signInWithEmailAndPassword(email: email, password: password);
-
-              // ignore: use_build_context_synchronously
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil(notesRoute, (route) => false);
-              devtools.log(userCredentials.toString());
-            } on FirebaseAuthException catch (e) {
-              if (e.code == 'user-not-found') {
-                await showErrorDialog(context, 'User not found');
-              } else if (e.code == 'wrong-password') {
-                await showErrorDialog(context, 'Wrong password');
+              final user = FirebaseAuth.instance.currentUser;
+              if (user?.emailVerified ?? false) {
+                // ignore: use_build_context_synchronously
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(notesRoute, (route) => false);
               } else {
-                await showErrorDialog(
-                    context, 'Something else happened. Error code: ${e.code}');
+                // ignore: use_build_context_synchronously
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    verifyEmailRoute, (route) => false);
               }
+
+              devtools.log(user.toString());
+            } on FirebaseAuthException catch (e) {
             } catch (e) {
               await showErrorDialog(context,
                   'Something else happened. Error code: ${e.toString()}');
