@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:notes/constants/table_fields.dart';
 
 @immutable
 class DatabaseNote {
